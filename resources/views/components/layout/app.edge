@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html class="h-full bg-white">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title || "Your default title" }}</title>
+    @if ($slots.meta)
+    {{{ await $slots.meta() }}}
+    @endif
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="h-full">
+    {{{ await $slots.main() }}}
+</body>
+
+</html>

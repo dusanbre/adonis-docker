@@ -1,0 +1,47 @@
+services:
+  app:
+    image: adonisjs6
+    # extra_hosts:
+    #   - 'host.docker.internal:host-gateway'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      HOST: '0.0.0.0'
+      DB_HOST: '${DB_HOST}'
+      DB_PORT: '${DB_PORT}'
+      DB_USER: '${DB_USER}'
+      DB_PASSWORD: '${DB_PASSWORD}'
+      DB_DATABASE: '${DB_DATABASE}'
+    ports:
+      - '${PORT-3333}:3333'
+      - '9229:9229'
+      - '24678:24678'
+    volumes:
+      - ./:/home/node/app
+    depends_on:
+      - db
+    networks:
+      - envoo-adonis
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: '${DB_USER}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+      POSTGRES_DB: '${DB_DATABASE}'
+    ports:
+      - '${DB_PORT:-5432}:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - envoo-adonis
+
+networks:
+  envoo-adonis:
+    driver: bridge
+    name: adonis-network
+
+volumes:
+  db-data:
