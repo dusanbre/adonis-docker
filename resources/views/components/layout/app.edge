@@ -12,7 +12,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="h-full">
+<body class="h-full bg-white">
+    @include('components/layout/header')
+
     {{{ await $slots.main() }}}
 </body>
 

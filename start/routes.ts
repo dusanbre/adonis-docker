@@ -20,7 +20,7 @@ router.post('/login', [UsersController, 'login']).as('login')
 router
     .group(() => {
         router.get('/', ({ view }) => view.render('pages/home')).as('home')
-        router.get('/users', [UsersController, 'index']).as('users.index')
+        // router.get('/users', [UsersController, 'index']).as('users.index')
 
         router.get('/posts', [PostsController, 'index']).as('posts.index')
     })
