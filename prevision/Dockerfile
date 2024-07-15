@@ -5,20 +5,20 @@ RUN mkdir -p /app
 # All deps stage
 FROM base as deps
 WORKDIR /app
-ADD package.json package-lock.json ./
+ADD ../package.json ../package-lock.json ./
 RUN npm ci
 
 # Production only deps stage
 FROM base as production-deps
 WORKDIR /app
-ADD package.json package-lock.json ./
+ADD ../package.json ../package-lock.json ./
 RUN npm ci --omit=dev
 
 # Build stage
 FROM base as build
 WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
-ADD . .
+ADD ../. .
 RUN node ace build
 
 # Production stage
