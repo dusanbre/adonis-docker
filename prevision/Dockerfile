@@ -1,5 +1,7 @@
 FROM node:20.12.2-alpine3.18 as base
 
+RUN mkdir -p /app
+
 # All deps stage
 FROM base as deps
 WORKDIR /app
