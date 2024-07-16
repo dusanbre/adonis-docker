@@ -1,10 +1,11 @@
 services:
   app:
-    image: adonisjs6
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: production
+    # image: adonisjs6
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   target: production
+    image: registry.dusanbre.cloud/dusanbreadonis:latest
     environment:
       HOST: '0.0.0.0'
       DB_HOST: '${DB_HOST}'
