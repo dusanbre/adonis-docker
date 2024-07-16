@@ -20,7 +20,9 @@ const loggerConfig = defineConfig({
         //   .pushIf(app.inProduction, targets.file({ destination: 1 }))
         //   .toArray(),
         targets: targets()
-          .push(targets.file({ destination: app.tmpPath('adonis.log') })).toArray(),
+          .pushIf(!app.inProduction, targets.file({ destination: app.tmpPath('adonis.log') }))
+          .pushIf(app.inProduction, targets.file({ destination: 1 }))
+          .toArray(),
       },
     },
   },
