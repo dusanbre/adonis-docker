@@ -13,6 +13,8 @@ services:
       DB_USER: '${DB_USER}'
       DB_PASSWORD: '${DB_PASSWORD}'
       DB_DATABASE: '${DB_DATABASE}'
+      REGISTRY_USERNAME: '${REGISTRY_USERNAME}'
+      REGISTRY_PASSWORD: '${REGISTRY_PASSWORD}'
     ports:
       - '${PORT-3333}:3333'
       - '9229:9229'
