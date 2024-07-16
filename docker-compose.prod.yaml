@@ -1,11 +1,10 @@
 services:
   app:
-    # image: adonisjs6
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    #   target: production
-    image: registry.dusanbre.cloud/dusanbreadonis:latest
+    image: adonisjs6
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
     environment:
       HOST: '0.0.0.0'
       DB_HOST: '${DB_HOST}'
@@ -13,8 +12,6 @@ services:
       DB_USER: '${DB_USER}'
       DB_PASSWORD: '${DB_PASSWORD}'
       DB_DATABASE: '${DB_DATABASE}'
-      REGISTRY_USERNAME: '${REGISTRY_USERNAME}'
-      REGISTRY_PASSWORD: '${REGISTRY_PASSWORD}'
     ports:
       - '${PORT-3333}:3333'
       - '9229:9229'
